@@ -20,6 +20,10 @@ BigQuery Dataset called "activities"\
 BigQuery Table called "resources" - starting schema\
     Command: `bq mk --schema messages:STRING -t activities.resources`
 
+Enable the Pub/Sub APIs\
+    Command: `gcloud services enable pubsub.googleapis.com`
+    Command: `gcloud services list`
+
 PubSub Topic called "activities"\
     Command: `gcloud pubsub topics create activities`
 
@@ -33,7 +37,7 @@ Create a Cloud Function\
 
 ## Google Asset Managment examples
 
-Enabling the APIs\
+Enable the Asset Manager and Cloud Resource Manager APIs\
     Command: `gcloud services enable cloudasset.googleapis.com`\
     Command: `gcloud services enable cloudresourcemanager.googleapis.com`\
     Command: `gcloud services list`
