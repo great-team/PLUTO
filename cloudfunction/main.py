@@ -15,7 +15,7 @@ table_id = "activities.resources"
 # Triggered from a message on a Cloud Pub/Sub topic.
 @functions_framework.cloud_event
 def pubsub_to_bigquery(cloud_event):
-    pubsub_message = base64.b64decode(cloud_event.data["message"]["data"])
+    pubsub_message = base64.b64decode(cloud_event.data["message"]["data"]).decode('utf-8') 
     print(pubsub_message)
     client = bigquery.Client()
     table = client.get_table(table_id)
