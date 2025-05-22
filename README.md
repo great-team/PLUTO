@@ -12,7 +12,7 @@ Make sure you have a project set\
     Command: `gcloud config set project YOURPROJECTNAME`
 
 Bucket named projectid-bucket\
-    Command: `gsutil mb gs://$GOOGLE_CLOUD_PROJECT"-bucket"`
+    Command: `gcloud storage buckets create gs://$GOOGLE_CLOUD_PROJECT-bucket`
     
 BigQuery Dataset called "activities"\
     Command: `bq mk activities`
@@ -24,7 +24,7 @@ PubSub Topic called "activities"\
     Command: `gcloud pubsub topics create activities`
 
 PubSub Subscription called "activites-catchall"\
-    Command : `gcloud pubsub subscriptions create activites-catchall --topic projects/PROJECTID/topics/activities`
+    Command : `gcloud pubsub subscriptions create activities-catchall --topic=projects/$GOOGLE_CLOUD_PROJECT/topics/activities`
 
 Create a Cloud Function\
     Python \
@@ -36,15 +36,15 @@ Create a Cloud Function\
 Enabling the APIs\
     Command: `gcloud services enable cloudasset.googleapis.com`\
     Command: `gcloud services enable cloudresourcemanager.googleapis.com`\
-    Command: `gcloud sercies list`
+    Command: `gcloud services list`
 
 Asset Export to BigQuery Example\
-    Command: `gcloud asset export --project PROJECTID --bigquery-table export --bigquery-dataset activities`
+(NOTE: It make take a few minutes after API enablement for this command to work)\
+    Command: `gcloud asset export --project=$GOOGLE_CLOUD_PROJECT --bigquery-table=export --bigquery-dataset=activities`
 
-Asset Feed Creation\
-    Command: `gcloud asset feeds create activities --project=PROJECTID 
-	--content-type=resource --asset-types="compute.googleapis.com.*" 
-	--pubsub-topic=projects/PROJECTID/topics/activities`
+Asset Feed Creation (to Pub/Sub)\
+    Command: 
+    `gcloud asset feeds create activities --project=$GOOGLE_CLOUD_PROJECT --content-type=resource --asset-types="compute.googleapis.com.*"	--pubsub-topic=projects/$GOOGLE_CLOUD_PROJECT/topics/activities`
 
 
 
