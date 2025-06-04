@@ -1,7 +1,7 @@
 steps:
   - name: 'python:3.9' # Or your desired python version
     entrypoint: 'pip'
-    args: ['install', '-r', 'requirements.txt', '--user']
+    args: ['install', '-r', './cloudfunction/requirements.txt', '--user']
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     args:
       - gcloud
