@@ -1,0 +1,14 @@
+steps:
+  - name: 'python:3.9' # Or your desired python version
+    entrypoint: 'pip'
+    args: ['install', '-r', 'requirements.txt', '--user']
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    args:
+      - gcloud
+      - functions
+      - deploy
+      - PLUTO  # Replace with your function's name
+      - --region=us-central1 # Replace with your function's region
+      - --source=./cloudfunction
+      - --trigger-http # Or your trigger type (e.g., --trigger-topic=YOUR_TOPIC)
+      - --runtime=python39 # Replace with your function's runtime (e.g., python39)
