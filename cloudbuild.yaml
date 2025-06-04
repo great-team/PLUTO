@@ -12,3 +12,5 @@ steps:
       - --source=./cloudfunction
       - --trigger-http # Or your trigger type (e.g., --trigger-topic=YOUR_TOPIC)
       - --runtime=python39 # Replace with your function's runtime (e.g., python39)
+options:
+  logging: CLOUD_LOGGING_ONLY
