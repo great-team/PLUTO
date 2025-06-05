@@ -7,7 +7,7 @@ steps:
       - gcloud
       - functions
       - deploy
-      - PLUTO  # Replace with your function's name
+      - pubsub_to_bigquery  # Replace with your function's name
       - --region=us-central1 # Replace with your function's region
       - --source=./cloudfunction
       - --trigger-http # Or your trigger type (e.g., --trigger-topic=YOUR_TOPIC)
